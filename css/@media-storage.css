@@ -1,0 +1,36 @@
+/*---------------------------------------------------------*
+*               Exclusive media queries                   *
+*                   for storage.html                      *
+*---------------------------------------------------------*/
+
+@media (max-width: 520px) {
+  .storage-content {
+    width: 100vw;
+    left: -24.5vw;
+  }
+
+  header {
+    opacity: 1;
+  }
+
+  .home-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .about-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .title-icon {
+    width: 60px;
+    height: 60px;
+    margin-left: 77%;
+  }
+
+  .download-cfgs {
+    gap: 2vw;
+    position: relative;
+  }
+}
