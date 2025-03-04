@@ -16,7 +16,6 @@ Inspirada no **fakecrime.bio**, esta biografia é perfeita para quem deseja algo
 - **HTML** 🏷️
 - **CSS** 🎨
 - **JavaScript** 📜
-- **JSON** 📑
 
 ---
 
