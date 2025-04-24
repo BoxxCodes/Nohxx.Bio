@@ -82,9 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const songName = document.getElementById("song-name");
   const artistName = document.getElementById("artist-name");
   const volumeBtn = document.getElementById("volume-btn");
-  const volumeSliderContainer = document.getElementById(
-    "volume-slider-container"
-  );
+  const volumeSliderContainer = document.getElementById("volume-slider-container");
   const volumeSlider = document.getElementById("volume-slider");
 
   let isPlaying = false;
@@ -129,9 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
-    return `${minutes
-      .toString()
-      .padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`;
+    return `${minutes.toString().padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`;
   }
 
   // Player Music
@@ -196,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateProgress() {
-    if (isPlaying && !isSeeking) {
+    if (!isSeeking) {
       const currentTime = audioElement.currentTime;
       progressBar.value = (currentTime / audioElement.duration) * 100;
       currentTimeDisplay.textContent = formatTime(currentTime);
@@ -221,8 +217,10 @@ document.addEventListener("DOMContentLoaded", function () {
         togglePlay();
       } else if (event.code === "ArrowRight") {
         audioElement.currentTime = Math.min(audioElement.duration, audioElement.currentTime + 5);
+        updateProgress();
       } else if (event.code === "ArrowLeft") {
         audioElement.currentTime = Math.max(0, audioElement.currentTime - 5);
+        updateProgress();
       }
     }
   });
