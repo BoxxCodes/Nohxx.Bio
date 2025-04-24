@@ -205,6 +205,28 @@ document.addEventListener("DOMContentLoaded", function () {
     requestAnimationFrame(updateProgress);
   }
 
+  progressBar.addEventListener("input", () => {
+    isSeeking = true;
+    const seekTime = (progressBar.value / 100) * audioElement.duration;
+    audioElement.currentTime = seekTime;
+    currentTimeDisplay.textContent = formatTime(seekTime);
+    progressBar.style.backgroundSize = `${progressBar.value}% 100%`;
+    isSeeking = false;
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.target.tagName !== "INPUT" && event.target.tagName !== "TEXTAREA") {
+      if (event.code === "Space") {
+        event.preventDefault();
+        togglePlay();
+      } else if (event.code === "ArrowRight") {
+        audioElement.currentTime = Math.min(audioElement.duration, audioElement.currentTime + 5);
+      } else if (event.code === "ArrowLeft") {
+        audioElement.currentTime = Math.max(0, audioElement.currentTime - 5);
+      }
+    }
+  });
+
   volumeBtn.addEventListener("click", () => {
     isVolumeVisible = !isVolumeVisible;
     if (isVolumeVisible) {
